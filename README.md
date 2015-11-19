@@ -26,7 +26,9 @@ A component is regular Vue instance without `new`:
 export default {
   el: '.list',
   data() {
-    return [{title: 'some title'}]
+    return {
+      list: [{title: 'some title'}]
+    }
   }
 }
 ```
