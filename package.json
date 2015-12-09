@@ -1,0 +1,37 @@
+{
+  "name": "vue-simple-router",
+  "version": "0.0.1",
+  "description": "Vue router for Non-Single-Page applications.",
+  "main": "dist/vsr.common.js",
+  "scripts": {
+    "test": "mocha",
+    "build": "rollup -c -o dist/vsr.common.js",
+    "serve": "serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egoist/vue-simple-router.git"
+  },
+  "keywords": [
+    "vue",
+    "router"
+  ],
+  "author": "EGOIST <0x142857@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/egoist/vue-simple-router/issues"
+  },
+  "homepage": "https://github.com/egoist/vue-simple-router#readme",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "jsdom": "^7.2.0",
+    "mocha": "^2.3.4",
+    "mocha-jsdom": "^1.0.0",
+    "rollup": "^0.21.2",
+    "rollup-plugin-babel": "^1.0.0"
+  },
+  "dependencies": {
+    "minimatch": "^3.0.0",
+    "vue": "^1.0.10"
+  }
+}
