@@ -14,8 +14,12 @@ export default class Router {
     return this;
   }
   map (routes) {
-    for (let route in routes) {
-      this.routes[route] = routes[route];
+    for (let key in routes) {
+      const route = routes[key];
+      if ('default' in route.view) {
+        route.view = route.view.default;
+      }
+      this.routes[key] = route;
     }
     return this;
   }
@@ -32,7 +36,7 @@ export default class Router {
         // then initial its child element
         // same, the parent instance would not own the control of its children
         this.initKids(view.kids);
-        new this.Vue('default' in view ? view.default : view);
+        new this.Vue(view);
       }
     }
     return this;
@@ -41,7 +45,7 @@ export default class Router {
     if (kids && Array.isArray(kids)) {
       kids.forEach(kid => {
         this.initKids(kid.kids);
-        new this.Vue('default' in kid ? kid.default : kid);
+        new this.Vue(kid);
       });
     }
   }
