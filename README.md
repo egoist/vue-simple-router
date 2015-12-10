@@ -33,12 +33,17 @@ router.map({
   '/': {
     view: home
   }
-})
+});
 
 // initial router and bind it to body
 router.init();
 // or bind to anywhere
 router.init('#app');
+
+// alias routes
+router.alias('/u/sox', '/user/egoist');
+// support minimatch too
+router.alias('/u/*', '/user/egoist');
 ```
 
 ## License

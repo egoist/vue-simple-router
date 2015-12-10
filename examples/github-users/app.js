@@ -45,5 +45,8 @@ System.import('../../dist/vsr.js')
         view: egoist
       }
     });
+    router.alias('/examples/github-users/?a=123', '/examples/github-users/')
+    router.alias('/examples/github-users/?a=*', '/examples/github-users/')
     router.init('body');
+    console.log(router);
   });

@@ -7,11 +7,23 @@ if (typeof __DEV__ !== 'undefined' && __DEV__) {
 export default class Router {
   constructor () {
     this.routes = {};
+    this.aliasRoutes = {};
     this.Vue = Vue;
+    this.fakePath = '';
   }
   use (name, options = {}) {
     this.Vue.use(name, options);
     return this;
+  }
+  alias (from, to) {
+    const aliasRoute = (from, to) => {
+      this.aliasRoutes[from] = to;
+    }
+    if (typeof from === 'string') {
+      aliasRoute(from, to);
+    } else {
+      from.forEach(f => aliasRoute(f, to));
+    }
   }
   map (routes) {
     for (let key in routes) {
@@ -26,8 +38,25 @@ export default class Router {
   init (bindTo = 'body') {
     this.bindTo = bindTo;
     const pathname = location.pathname + location.search + location.hash;
+    // check if the current pathname matched in aliasRoutes
+    // if match then return that pattern
+    const testAliasRoute = () => {
+      for (let i in this.aliasRoutes) {
+        if (this.aliasRoutes[i] && (pathname === i  || minimatch(pathname, i))) {
+          return i;
+        }
+      }
+      return false
+    }
+    const aliasRoute = testAliasRoute();
+    // if is an aliasRoute ignore mapRoute
+    if (aliasRoute) {
+      this.fakePath = this.aliasRoutes[aliasRoute];
+    } else {
+      this.fakePath = pathname;
+    }
     for (let i in this.routes) {
-      if (minimatch(pathname, i)) {
+      if (minimatch(this.fakePath, i)) {
         const view = this.routes[i].view;
         view.el = this.bindTo;
         // we initial its kids before itself
