@@ -21,8 +21,9 @@ export default class Router {
   }
   init (bindTo = 'body') {
     this.bindTo = bindTo;
+    const pathname = location.pathname + location.search + location.hash;
     for (let i in this.routes) {
-      if (minimatch(location.pathname, i)) {
+      if (minimatch(pathname, i)) {
         const view = this.routes[i].view;
         view.el = this.bindTo;
         // we initial its kids before itself
