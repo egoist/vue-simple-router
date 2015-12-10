@@ -2,6 +2,7 @@ var webpack = require('webpack')
 var config = require('./webpack.config')
 var path = require('path')
 
+config.entry = './src/index'
 config.debug = true
 config.devtool = 'source-map'
 config.plugins = [

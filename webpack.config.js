@@ -1,5 +1,5 @@
 module.exports = {
-  entry: ['./src/index'],
+  entry: ['./index'],
   output: {
     path: __dirname + '/dist',
     filename: 'vsr.js',

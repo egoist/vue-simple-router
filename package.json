@@ -1,13 +1,13 @@
 {
   "name": "vue-simple-router",
-  "version": "0.1.1",
+  "version": "0.1.11",
   "description": "Vue router for Non-Single-Page applications.",
   "main": "index.js",
   "scripts": {
     "test": "make test",
     "unit-test": "mocha test.js --recursive",
     "dev": "webpack --config webpack.config.dev.js --watch",
-    "build": "webpack -p --config webpack.config.prod.js",
+    "build": "npm run rollup && webpack -p --config webpack.config.prod.js",
     "rollup": "rollup -c -o index.js",
     "serve": "serve"
   },
