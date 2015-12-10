@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>EGOIST - GitHub users</title>
+    <style>
+      .user,h1 {
+        max-width: 555px;
+        margin: 30px auto;
+        border: 1px solid #e2e2e2;
+        min-height: 200px;
+      }
+      h1 {
+        margin: 0 auto;
+        min-height: 40px;
+        line-height: 40px;
+      }
+      h2 {
+        margin: 0;
+      }
+      .repo {
+        padding: 10px;
+        border-bottom: 1px solid #e2e2e2;
+      }
+      .repo:last-child {
+        border-bottom: none;
+      }
+      .des {
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      <a href="./">EGOIST</a>
+    </h1>
+    <div class="user">
+      <div class="repo" v-if="repos.length === 0">loading...</div>
+      <div class="repo" v-for="repo in repos">
+        <h2 class="name" v-text="repo.name"></h2>
+        <div class="des" v-html="repo.description"></div>
+      </div>
+      <div id="sox">{{ name }}</div>
+    </div>
+
+    <script src="https://cdn.css.net/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="https://cdn.css.net/libs/systemjs/0.18.4/system.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

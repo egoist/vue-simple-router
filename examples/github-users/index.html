@@ -3,8 +3,33 @@
   <head>
     <meta charset="utf-8">
     <title>GitHub users</title>
+    <style>
+      .user {
+        max-width: 120px;
+        margin: 30px auto;
+        border: 1px solid #e2e2e2;
+        text-align: center;
+      }
+      .user-avatar {
+        padding: 10px;
+      }
+      .user-name {
+        padding: 10px;
+        border-top: 1px solid #e2e2e2;
+        height: 20px;
+        line-height: 20px;
+      }
+    </style>
   </head>
   <body>
+    <div class="user">
+      <div class="user-avatar">
+        <img :src="user.avatar_url" alt="" height="100" />
+      </div>
+      <div class="user-name">
+        <a href="./{{ user.login }}.html" v-text="user.login">loading...</a>
+      </div>
+    </div>
     <script src="https://cdn.css.net/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
     <script src="https://cdn.css.net/libs/systemjs/0.18.4/system.js"></script>
     <script src="./app.js"></script>
