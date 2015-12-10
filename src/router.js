@@ -32,7 +32,7 @@ export default class Router {
         // then initial its child element
         // same, the parent instance would not own the control of its children
         this.initKids(view.kids);
-        new this.Vue(view);
+        new this.Vue('default' in view ? view.default : view);
       }
     }
     return this;
@@ -41,7 +41,7 @@ export default class Router {
     if (kids && Array.isArray(kids)) {
       kids.forEach(kid => {
         this.initKids(kid.kids);
-        new this.Vue(kid)
+        new this.Vue('default' in kid ? kid.default : kid);
       });
     }
   }

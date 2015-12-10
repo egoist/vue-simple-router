@@ -1,6 +1,6 @@
 {
   "name": "vue-simple-router",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Vue router for Non-Single-Page applications.",
   "main": "index.js",
   "scripts": {
