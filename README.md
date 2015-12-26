@@ -25,7 +25,12 @@ const home = {
   data () {
     return { siteName: 'Home' };
   },
-  kids: [footer]
+  kids: [footer],
+  // It works with `Webpack` and `Vue-loader`
+  // which means you can write single-file Vue component and use it in Vue Simple Router.
+  components: {
+    clock: require('./components/clock.vue')
+  }
 };
 
 // use a plugin, like vue-resource
@@ -37,6 +42,10 @@ router.Vue.use(VueResource);
 router.map({
   '/': {
     view: home
+  },
+  '/hi': {
+    // single-file component can be used in view too.
+    view: require('./views/some_view.vue')
   }
 });
 
