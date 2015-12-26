@@ -28,6 +28,11 @@ const home = {
   kids: [footer]
 };
 
+// use a plugin, like vue-resource
+router.use(VueResource);
+// or
+router.Vue.use(VueResource);
+
 // map routes, support /user/* style minimatch
 router.map({
   '/': {
