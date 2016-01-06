@@ -37,16 +37,11 @@ System.import('../../dist/vsr.js')
     return router.default;
   })
   .then(function (router) {
-    router.map({
-      '/examples/github-users/': {
-        view: home
-      },
-      '/examples/github-users/egoist.html': {
-        view: egoist
-      }
-    });
-    router.alias('/examples/github-users/?a=123', '/examples/github-users/')
-    router.alias('/examples/github-users/?a=*', '/examples/github-users/')
+    router.reg(/^\/examples\/github-users\/$/, {
+      view: home
+    })
+    router.reg(/^\/examples\/github-users\/([\w])+\.html/, {
+      view: egoist
+    })
     router.init('body');
-    console.log(router);
   });

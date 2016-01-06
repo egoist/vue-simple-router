@@ -39,14 +39,12 @@ router.use(VueResource);
 router.Vue.use(VueResource);
 
 // map routes, support /user/* style minimatch
-router.map({
-  '/': {
-    view: home
-  },
-  '/hi': {
-    // single-file component can be used in view too.
-    view: require('./views/some_view.vue')
-  }
+router.reg('/home*', {
+  view: home
+});
+// or Regex
+router.reg(/^\/home$/, {
+  view: home
 });
 
 // initial router and bind it to body
